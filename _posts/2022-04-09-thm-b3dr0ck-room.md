@@ -24,7 +24,18 @@ categories:
 
 ---
 <h3>Join room here: <a title="Join this room!" href="https://tryhackme.com/jr/b3dr0ck" target="_blank" rel="noopener">tryhackme.com/jr/b3dr0ck</a></h3>
-<p><img src="https://sls-ci-bowtie-houndstooth-root-us-east-1-assets.s3.amazonaws.com/5290charlie/blog/1649629406725-b3dr0ck-intro.png" alt="b3dr0ck intro" width="791" height="300" /></p>
+<h3>Fantastic Video Review: <a title="b3dr0ck video walkthrough by VainXploits" href="https://youtu.be/BSehk-dhBlg" target="_blank" rel="noopener">b3dr0ck walkthrough by VainXploits</a></h3>
+<ul>
+<li><a title="Subscribe to VainXploits on YouTube" href="https://www.youtube.com/channel/UCEC6TnMZlGYBeFG40ZrTsLQ" target="_blank" rel="noopener">Go subscribe to VainXploits if you have not already!</a></li>
+</ul>
+<p><img src="https://sls-ci-bowtie-houndstooth-root-us-east-1-assets.s3.amazonaws.com/5290charlie/blog/1650051940425-BqXFc-1565710625-263-show-flintstones_header_940x370 (1).jpg" alt="Fred &amp; Barney" width="766" height="300" /></p>
+<h3>Context (THM Task)</h3>
+<p>Barney is setting up the ABC webserver, and trying to use TLS certs to secure connections, but he's having trouble ...</p>
+<ul>
+<li>He was able to establish nginx on port <strong>80</strong>,&nbsp; redirecting to a custom TLS webserver on port <strong>4040</strong> -</li>
+<li>There is a TCP socket listening with a simple service to help retrieve TLS credential files (client key &amp; certificate)</li>
+<li>There is another TCP(TLS) helper service listening for authorized connections using files obtained from above service</li>
+</ul>
 <h3>Steps</h3>
 <ul>
 <li>Start Machine and wait for VM ip address</li>
