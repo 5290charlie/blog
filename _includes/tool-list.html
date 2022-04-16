@@ -1,0 +1,20 @@
+{% assign tools = site.tools | where:true, post.published %}
+
+{%- if tools.size > 0 -%}
+  <ul class="tool-list post-list">
+    {%- for tool in tools -%}
+    <li class="tool-list-item post-list-item">
+      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+      <span class="tool-meta post-meta">{{ tool.date | date: date_format }}</span>
+      <h3>
+        <a class="tool-link post-link" href="{{ tool.url | relative_url }}">
+          {{ tool.title | escape }}
+        </a>
+      </h3>
+    </li>
+    {%- endfor -%}
+  </ul>
+{%- else -%}
+  <p>No tools here... Yet!</p>
+  <img src="/assets/img/brule.gif" />
+{%- endif -%}

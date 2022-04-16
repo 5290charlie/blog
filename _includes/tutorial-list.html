@@ -1,0 +1,20 @@
+{% assign tutorials = site.tutorials | where:true, post.published %}
+
+{%- if tutorials.size > 0 -%}
+  <ul class="tutorial-list post-list">
+    {%- for tutorial in tutorials -%}
+    <li class="tutorial-list-item post-list-item">
+      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+      <span class="tutorial-meta post-meta">{{ tutorial.date | date: date_format }}</span>
+      <h3>
+        <a class="tutorial-link post-link" href="{{ tutorial.url | relative_url }}">
+          {{ tutorial.title | escape }}
+        </a>
+      </h3>
+    </li>
+    {%- endfor -%}
+  </ul>
+{%- else -%}
+  <p>No tutorials here... Yet!</p>
+  <img src="/assets/img/droids.gif" />
+{%- endif -%}

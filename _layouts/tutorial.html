@@ -1,0 +1,17 @@
+---
+layout: default
+---
+<div class="tutorial">
+  <a href="/tutorials">&lt; All tutorials</a>
+
+  <header class="tutorial-header">
+    <h1 class="tutorial-title">{{ page.title | escape }}</h1>
+    <h3 class="tutorial-subtitle">{{ page.subtitle | escape }}</h3>
+  </header>
+
+  <img class="tutorial-img" src="{{ page.img_url }}" alt="{{ page.img_alt }}" />
+
+  <div class="tutorial-content e-content">
+    {{ content }}
+  </div>
+</div>

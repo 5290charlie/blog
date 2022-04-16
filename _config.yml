@@ -52,8 +52,10 @@ plugins:
 collections:
   posts:
     output: true
-  # products:
-  #   output: true
+  tools:
+    output: true
+  tutorials:
+    output: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.
