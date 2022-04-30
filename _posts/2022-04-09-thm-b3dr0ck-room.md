@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'b3dr0ck - {THM} Room'
+title: 'b3dr0ck (original) - {THM} Room'
 description: >-
   Created my first CTF room on TryHackMe! Gain access to the ABC servers, using
   lightweight custom TCP/TLS/HTTPS services. Learn about TLS certificate
