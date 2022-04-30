@@ -1,12 +1,12 @@
 ---
 layout: post
-title: 'b3dr0ck - {THM} Room'
+title: 'b3dr0ck (v2) - {THM} Room'
 description: >-
   Created my first CTF room on TryHackMe! Gain access to the ABC servers, using
   lightweight custom TCP/TLS/HTTPS services. Learn about TLS certificate
   authorization and more!
 image: /assets/img/b3dr0ck/gazoo.png
-permalink: /blog/thm-b3dr0ck-original/
+permalink: /blog/thm-b3dr0ck/
 published: true
 categories:
   - tryhackme
@@ -23,11 +23,7 @@ categories:
   - ssl
 
 ---
-<h3>Join room here: <a title="Join this room!" href="https://tryhackme.com/jr/b3dr0ck" target="_blank" rel="noopener">tryhackme.com/jr/b3dr0ck</a></h3>
-<h5><a title="b3dr0ck video walkthrough by VainXploits" href="https://youtu.be/BSehk-dhBlg" target="_blank" rel="noopener">Great b3dr0ck video walkthrough by VainXploits here</a></h5>
-<ul>
-<li><a title="Subscribe to VainXploits on YouTube" href="https://www.youtube.com/channel/UCEC6TnMZlGYBeFG40ZrTsLQ" target="_blank" rel="noopener">Go subscribe to VainXploits if you have not already!</a></li>
-</ul>
+<h3>Join room here: <a title="Join this room!" href="https://tryhackme.com/jr/b3dr0ckvc" target="_blank" rel="noopener">tryhackme.com/jr/b3dr0ckvc</a></h3>
 <p><img src="https://sls-ci-bowtie-houndstooth-root-us-east-1-assets.s3.amazonaws.com/5290charlie/blog/1650051940425-BqXFc-1565710625-263-show-flintstones_header_940x370 (1).jpg" alt="Fred &amp; Barney" width="766" height="300" /></p>
 <h3>Context (THM Task)</h3>
 <p>Barney is setting up the ABC webserver, and trying to use TLS certs to secure connections, but he's having trouble ...</p>
