@@ -6,7 +6,7 @@ image: >-
   https://sls-ci-bowtie-houndstooth-root-us-east-1-assets.s3.amazonaws.com/5290charlie/blog/1651371118951-b6d411d11d36a1b8fb915a82860e04cd
   (1).jpeg
 permalink: /blog/thm-0day/
-published: true
+published: false
 categories:
   - tryhackme
   - hacking
