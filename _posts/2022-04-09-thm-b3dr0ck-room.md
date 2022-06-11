@@ -7,7 +7,7 @@ description: >-
   authorization and more!
 image: /assets/img/b3dr0ck/gazoo.png
 permalink: /blog/thm-b3dr0ck-original/
-published: true
+published: false
 categories:
   - tryhackme
   - hacking
