@@ -4,6 +4,7 @@ title: 'Making a CTF - {THM} Room'
 description: The making of THM room "southpark"
 image: /assets/img/post_img.png
 permalink: /blog/thm-making-a-ctf-room/
+private: false
 published: false
 categories:
   - thm

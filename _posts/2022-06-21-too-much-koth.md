@@ -4,6 +4,7 @@ title: Too much KoTH ...
 description: 'Been an insane month, getting pretty good at King of The Hill on TryHackMe!'
 image: /assets/img/post_img.png
 permalink: /blog/too-much-koth/
+private: false
 published: false
 categories:
   - thm

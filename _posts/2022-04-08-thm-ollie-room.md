@@ -3,6 +3,7 @@ layout: post
 title: 'Ollie - {THM} Room'
 description: 'Ollie THM writeup (just notes, actual writeup coming soon!)'
 permalink: /blog/thm-ollie/
+private: false
 published: true
 categories:
   - thm

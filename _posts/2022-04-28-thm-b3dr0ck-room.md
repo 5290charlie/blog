@@ -7,7 +7,10 @@ description: >-
   authorization and more!
 image: /assets/img/b3dr0ck/gazoo.png
 permalink: /blog/thm-b3dr0ck/
-published: false
+private: true
+published: true
+password: YzJodmQyMWxaR0Z0YjI1bGVRPT0=
+password_hint: Double B64 encoded (not secure, just a hurdle)
 categories:
   - tryhackme
   - hacking

@@ -33,4 +33,8 @@ layout: default
   {%- endif -%}
 
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+
+  {%- if page.password -%}
+    <script>(function () { if (!location.search.includes(`token=${atob(atob('{{ page.password }}'))}`)) location.href='/'; })();</script>
+  {%- endif -%}
 </article>
