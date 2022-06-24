@@ -6,7 +6,7 @@ description: >-
   lightweight custom TCP/TLS/HTTPS services. Learn about TLS certificate
   authorization and more!
 image: /assets/img/b3dr0ck/gazoo.png
-permalink: /blog/thm-b3dr0ck/
+permalink: /priv/thm-b3dr0ck/
 private: true
 published: true
 password: YzJodmQyMWxaR0Z0YjI1bGVRPT0=
