@@ -23,7 +23,7 @@ categories:
   - ssl
 
 ---
-<h3>Join room here: <a title="Join this room!" href="https://tryhackme.com/jr/b3dr0ckvc" target="_blank" rel="noopener">tryhackme.com/jr/b3dr0ckvc</a></h3>
+<h3>Join room here: <a title="Join this room!" href="https://tryhackme.com/jr/b3dr0ck" target="_blank" rel="noopener">tryhackme.com/jr/b3dr0ck</a></h3>
 <p>Signup for TryHackMe today! <a title="Try Hack Me Homepage" href="https://tryhackme.com/" target="_blank" rel="noopener">tryhackme.com</a></p>
 <p><img src="https://sls-ci-bowtie-houndstooth-root-us-east-1-assets.s3.amazonaws.com/5290charlie/blog/1650051940425-BqXFc-1565710625-263-show-flintstones_header_940x370 (1).jpg" alt="Fred &amp; Barney" width="766" height="300" /></p>
 <h3>Context (THM Task)</h3>
