@@ -4,7 +4,8 @@ title: A bad day for rootpiebot on KoTH
 description: >-
   The harder you cheat, the harder it hurts when I kick the shit out of you.
   Learned the hard way sometimes, better luck next time rootpiebot!
-image: /assets/img/post_img.png
+image: >-
+  https://sls-ci-bowtie-houndstooth-root-us-east-1-assets.s3.amazonaws.com/5290charlie/blog/1671586022118-rootpiebot-forkbomb-dickhead.png
 permalink: /blog/rootpiebot-bad-day/
 private: false
 published: true
