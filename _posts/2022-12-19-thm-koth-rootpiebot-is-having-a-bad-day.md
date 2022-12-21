@@ -7,12 +7,17 @@ description: >-
 image: /assets/img/post_img.png
 permalink: /blog/rootpiebot-bad-day/
 private: false
-published: false
+published: true
 password: null
 password_hint: 'Double B64 encoded (not secure, just a hurdle)'
 categories:
-  - example
-  - stuff
+  - thm
+  - koth
+  - king of the hill
+  - tryhackme
+  - hacking
+  - cheaters
+  - wrath of snipe
 
 ---
 <p>TLDR; Don't cheat at KoTH and life will be easier (<em>at least when I'm involved</em>)...</p>
