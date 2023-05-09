@@ -6,7 +6,7 @@ image: >-
   https://tryhackme-images.s3.amazonaws.com/user-avatars/70033018b3ff769d5e2c02f6499fb3ee.jpg
 permalink: /blog/chillin-with-trap/
 private: false
-published: true
+published: false
 password: null
 password_hint: 'Double B64 encoded (not secure, just a hurdle)'
 categories:
